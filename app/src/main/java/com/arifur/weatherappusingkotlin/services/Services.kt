@@ -26,8 +26,8 @@ class Services {
         .build()
         .create(WeatherApi::class.java)
 
-    fun getWeatherData(queryMap: QueryMap): Single<WeatherModel> {
-        return weatherApi.getCurrentWeather(queries = queryMap)
+    fun getWeatherData(appid:String, lat:String, lon:String): Single<WeatherModel> {
+        return weatherApi.getCurrentWeather(appid = appid, lat = lat ,lon= lon)
     }
 
 }

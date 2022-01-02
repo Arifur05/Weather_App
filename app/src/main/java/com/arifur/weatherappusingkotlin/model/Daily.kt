@@ -75,6 +75,6 @@ class Daily {
 
     @SerializedName("uvi")
     @Expose
-    var uvi: Int? = null
+    var uvi: Double? = null
 
 }

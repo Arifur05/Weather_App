@@ -2,10 +2,7 @@ package com.arifur.weatherappusingkotlin.model
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
-import com.arifur.weatherappusingkotlin.model.Hourly
-import com.arifur.weatherappusingkotlin.model.Daily
-import com.arifur.weatherappusingkotlin.model.WeatherModel
-import java.lang.StringBuilder
+
 
 class WeatherModel {
     @SerializedName("lat")

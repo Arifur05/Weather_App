@@ -33,7 +33,7 @@ class Hourly {
 
     @SerializedName("uvi")
     @Expose
-    var uvi: Int? = null
+    var uvi: Double? = null
 
     @SerializedName("clouds")
     @Expose
@@ -53,7 +53,7 @@ class Hourly {
 
     @SerializedName("wind_gust")
     @Expose
-    var windGust: Int? = null
+    var windGust: Double? = null
 
     @SerializedName("weather")
     @Expose
@@ -62,71 +62,5 @@ class Hourly {
     @SerializedName("pop")
     @Expose
     var pop: Int? = null
-    override fun toString(): String {
-        val sb = StringBuilder()
-        sb.append(Hourly::class.java.name).append('@')
-            .append(Integer.toHexString(System.identityHashCode(this))).append('[')
-        sb.append("dt")
-        sb.append('=')
-        sb.append(if (dt == null) "<null>" else dt)
-        sb.append(',')
-        sb.append("temp")
-        sb.append('=')
-        sb.append(if (temp == null) "<null>" else temp)
-        sb.append(',')
-        sb.append("feelsLike")
-        sb.append('=')
-        sb.append(if (feelsLike == null) "<null>" else feelsLike)
-        sb.append(',')
-        sb.append("pressure")
-        sb.append('=')
-        sb.append(if (pressure == null) "<null>" else pressure)
-        sb.append(',')
-        sb.append("humidity")
-        sb.append('=')
-        sb.append(if (humidity == null) "<null>" else humidity)
-        sb.append(',')
-        sb.append("dewPoint")
-        sb.append('=')
-        sb.append(if (dewPoint == null) "<null>" else dewPoint)
-        sb.append(',')
-        sb.append("uvi")
-        sb.append('=')
-        sb.append(if (uvi == null) "<null>" else uvi)
-        sb.append(',')
-        sb.append("clouds")
-        sb.append('=')
-        sb.append(if (clouds == null) "<null>" else clouds)
-        sb.append(',')
-        sb.append("visibility")
-        sb.append('=')
-        sb.append(if (visibility == null) "<null>" else visibility)
-        sb.append(',')
-        sb.append("windSpeed")
-        sb.append('=')
-        sb.append(if (windSpeed == null) "<null>" else windSpeed)
-        sb.append(',')
-        sb.append("windDeg")
-        sb.append('=')
-        sb.append(if (windDeg == null) "<null>" else windDeg)
-        sb.append(',')
-        sb.append("windGust")
-        sb.append('=')
-        sb.append(if (windGust == null) "<null>" else windGust)
-        sb.append(',')
-        sb.append("weather")
-        sb.append('=')
-        sb.append(if (weather == null) "<null>" else weather)
-        sb.append(',')
-        sb.append("pop")
-        sb.append('=')
-        sb.append(if (pop == null) "<null>" else pop)
-        sb.append(',')
-        if (sb[sb.length - 1] == ',') {
-            sb.setCharAt(sb.length - 1, ']')
-        } else {
-            sb.append(']')
-        }
-        return sb.toString()
-    }
+
 }

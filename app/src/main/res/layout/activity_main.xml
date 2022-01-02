@@ -16,14 +16,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:showDividers="middle">
+
         <TextView
             android:id="@+id/temperature_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:text="0 degree"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            android:layout_margin="16dp"/>
+            android:textSize="12sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

@@ -1,70 +1,51 @@
 package com.arifur.weatherappusingkotlin
 
-import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.arifur.weatherappusingkotlin.databinding.ActivityMainBinding
-import com.arifur.weatherappusingkotlin.databinding.ActivityMainBinding.inflate
-import com.arifur.weatherappusingkotlin.model.WeatherModel
-import com.arifur.weatherappusingkotlin.services.Services
-import com.arifur.weatherappusingkotlin.services.utils.api_key
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.schedulers.Schedulers
+import android.text.method.TextKeyListener.clear
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 
+import com.arifur.weatherappusingkotlin.databinding.ActivityMainBinding
+import com.arifur.weatherappusingkotlin.ui.dashboard.DashboardFragment
+import com.arifur.weatherappusingkotlin.ui.home.HomeFragment
+import com.arifur.weatherappusingkotlin.ui.notifications.NotificationsFragment
 
 class MainActivity : AppCompatActivity() {
-    private var queryMap: HashMap<String, String> = HashMap<String,String>()
-    private val weatherService= Services()
-    val weather=
-        MutableLiveData<WeatherModel>()
-    private lateinit var binding: ActivityMainBinding
+
+private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        binding = inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
 
-        queryMap["appid"] = api_key
-        queryMap["lat"] = "23.56998"
-        queryMap["lon"] = "90.2356"
+     binding = ActivityMainBinding.inflate(layoutInflater)
+     setContentView(binding.root)
 
-
-
-sumo()
+        val navView: BottomNavigationView = binding.navView
+        val home = HomeFragment()
+        val location = DashboardFragment()
+        val settings = NotificationsFragment()
+        setFragment(HomeFragment())
+        navView.setOnItemSelectedListener {
+            when(it.itemId) {
+                R.id.navigation_home->setFragment(home)
+                R.id.navigation_locations->setFragment(location)
+                R.id.navigation_setting->setFragment(settings)
+            }
+            true
+        }
 
     }
-    fun sumo(){
-        weatherService.getWeatherData(appid = "05f97c207bd8e3f4ed8cbeb774646919", lat = "23.56998", lon = "90.2356")
-            .subscribeOn(Schedulers.newThread())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith(@SuppressLint("CheckResult")
-            object: DisposableSingleObserver<WeatherModel>(){
-//                override fun onSuccess(value: WeatherModel?) {
-//                    binding.temperatureNow.text = value.toString()
-//
-//                }
-//
-//                override fun onError(e: Throwable?) {
-//                    Log.e("TAG", "onCreate: $e")
-//
-//                }
 
-                override fun onSuccess(t: WeatherModel) {
-                    Log.e("TAG", "onCreate: ${t.current} ${t.current?.weather?.get(0)?.icon}")
-                    binding.temperatureNow.text = t.current?.sunrise.toString()
-                }
-
-                override fun onError(e: Throwable) {
-                    Log.e("TAG", "onCreate: $e")
-                    binding.temperatureNow.text = e.message
-
-                }
-
-            })
+    private fun setFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().apply{
+            replace(R.id.fragment_container,fragment)
+            commit()
+        }
     }
+
 }

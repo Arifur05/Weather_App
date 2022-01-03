@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Weather App Using Kotlin</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_location">Location</string>
+    <string name="title_settings">Settings</string>
 </resources>

@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.arifur.weatherappusingkotlin.R
 import com.arifur.weatherappusingkotlin.databinding.FragmentHomeBinding
+import com.arifur.weatherappusingkotlin.model.WeatherModel
 
 class HomeFragment : Fragment() {
 
@@ -30,9 +31,10 @@ private var _binding: FragmentHomeBinding? = null
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.temperatureNow
-    homeViewModel.text.observe(viewLifecycleOwner, Observer {
-      textView.text = it
+//    val textView: TextView = binding.temperatureNow
+
+    homeViewModel.weatherModel.observe(viewLifecycleOwner, Observer {
+      binding.temperatureNow.text = it.current.toString()
     })
     return root
   }
@@ -41,4 +43,6 @@ override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }

@@ -1,7 +1,8 @@
 package com.arifur.weatherappusingkotlin.services
 
 import com.arifur.weatherappusingkotlin.model.WeatherModel
-import io.reactivex.Single
+
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
 

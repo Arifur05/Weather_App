@@ -32,11 +32,11 @@ private lateinit var binding: ActivityMainBinding
         setFragment(HomeFragment())
         navView.setOnItemSelectedListener {
             when(it.itemId) {
-                R.id.navigation_home->setFragment(home)
-                R.id.navigation_locations->setFragment(location)
-                R.id.navigation_setting->setFragment(settings)
+                R.id.navigation_home->setFragment(HomeFragment())
+                R.id.navigation_locations->setFragment(DashboardFragment())
+                R.id.navigation_setting->setFragment(NotificationsFragment())
             }
-            true
+            false
         }
 
     }

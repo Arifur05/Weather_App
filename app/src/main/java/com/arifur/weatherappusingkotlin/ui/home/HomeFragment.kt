@@ -8,9 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.arifur.weatherappusingkotlin.R
 import com.arifur.weatherappusingkotlin.databinding.FragmentHomeBinding
 import com.arifur.weatherappusingkotlin.model.WeatherModel
+import com.squareup.picasso.Picasso
 
 class HomeFragment : Fragment() {
 
@@ -24,9 +26,9 @@ private var _binding: FragmentHomeBinding? = null
     inflater: LayoutInflater,
     container: ViewGroup?,
     savedInstanceState: Bundle?
-  ): View? {
+  ): View {
     homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        ViewModelProviders.of(this)[HomeViewModel::class.java]
 
     _binding = FragmentHomeBinding.inflate(inflater, container, false)
     val root: View = binding.root
@@ -34,7 +36,10 @@ private var _binding: FragmentHomeBinding? = null
 //    val textView: TextView = binding.temperatureNow
 
     homeViewModel.weatherModel.observe(viewLifecycleOwner, Observer {
+        weather: WeatherModel-> weather.let {
       binding.temperatureNow.text = it.current.toString()
+       Picasso.get().load(it.current?.weather?.get(0)?.icon).into(binding.weatherImage)
+    }
     })
     return root
   }

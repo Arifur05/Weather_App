@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_homes"
+        android:id="@+id/navigation_home"
         android:icon="@drawable/home"
         app:labelVisibilityMode="unlabeled"
         android:title="@string/title_home"/>
 
     <item
-        android:id="@+id/navigation_locations"
+        android:id="@+id/navigation_dashboard"
         android:icon="@drawable/love"
         app:labelVisibilityMode="unlabeled"
         android:title="@string/title_location"/>
 
     <item
-        android:id="@+id/navigation_setting"
+        android:id="@+id/navigation_notifications"
         app:labelVisibilityMode="unlabeled"
         android:icon="@drawable/open_menu"
         android:title="@string/title_settings"/>

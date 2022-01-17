@@ -1,14 +1,11 @@
 package com.arifur.weatherappusingkotlin
 
 import android.os.Bundle
-import android.text.method.TextKeyListener.clear
+
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+
 
 import com.arifur.weatherappusingkotlin.databinding.ActivityMainBinding
 import com.arifur.weatherappusingkotlin.ui.dashboard.DashboardFragment
@@ -26,15 +23,13 @@ private lateinit var binding: ActivityMainBinding
      setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-        val home = HomeFragment()
-        val location = DashboardFragment()
-        val settings = NotificationsFragment()
+
         setFragment(HomeFragment())
         navView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.navigation_home->setFragment(HomeFragment())
-                R.id.navigation_locations->setFragment(DashboardFragment())
-                R.id.navigation_setting->setFragment(NotificationsFragment())
+                R.id.navigation_dashboard->setFragment(DashboardFragment())
+                R.id.navigation_notifications->setFragment(NotificationsFragment())
             }
             false
         }
@@ -43,7 +38,7 @@ private lateinit var binding: ActivityMainBinding
 
     private fun setFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply{
-            replace(R.id.fragment_container,fragment)
+            replace(R.id.nav_host_fragment_activity_main,fragment)
             commit()
         }
     }

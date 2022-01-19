@@ -2,9 +2,7 @@ package com.arifur.weatherappusingkotlin.model
 
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
-import com.arifur.weatherappusingkotlin.model.Weather
-import com.arifur.weatherappusingkotlin.model.Hourly
-import java.lang.StringBuilder
+
 
 class Hourly {
     @SerializedName("dt")

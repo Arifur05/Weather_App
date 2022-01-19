@@ -1,5 +1,8 @@
 package com.arifur.weatherappusingkotlin.model
 
+import com.arifur.weatherappusingkotlin.model.FeelsLike
+import com.arifur.weatherappusingkotlin.model.Weather
+import com.arifur.weatherappusingkotlin.model.Temp
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
 

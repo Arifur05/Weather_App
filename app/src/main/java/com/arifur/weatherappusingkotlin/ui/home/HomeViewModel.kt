@@ -14,6 +14,7 @@
 
 
 
+import android.media.Image
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -37,6 +38,7 @@ class HomeViewModel : ViewModel() {
     val weatherModel= MutableLiveData<WeatherModel>()
     val loadingError= MutableLiveData<Boolean>()
     val loading= MutableLiveData<Boolean>()
+    val weatherIcon = MutableLiveData<Image>()
 
     fun refreshWeather(){
         fetchWeather()
@@ -50,7 +52,7 @@ class HomeViewModel : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<WeatherModel>(){
                     override fun onSuccess(value: WeatherModel) {
-                        Log.d("HomeViewModel", "onSuccess`: $value")
+                        Log.d("HomeViewModel", "onSuccess`: ${value.current?.weather?.get(0)?.icon}")
                         weatherModel.value = value
                         loadingError.value =false
                         loading.value = false
@@ -66,8 +68,11 @@ class HomeViewModel : ViewModel() {
                 ))
 
 
-
     }
 
+    override fun onCleared() {
+        super.onCleared()
+        disposables.clear()
+    }
 
 }

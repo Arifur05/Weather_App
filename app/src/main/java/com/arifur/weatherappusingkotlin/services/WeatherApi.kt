@@ -4,6 +4,7 @@ import com.arifur.weatherappusingkotlin.model.WeatherModel
 
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 import retrofit2.http.QueryMap
@@ -16,12 +17,13 @@ import retrofit2.http.QueryMap
  * Copyright (C) 2022 - All Rights Reserved
  **/
 interface WeatherApi {
-   // lat=23.72&lon=90.41
-//    &appid=05f97c207bd8e3f4ed8cbeb774646919
+
     @GET("data/2.5/onecall?&exclude=minutely&units=metric")
     fun  getCurrentWeather(@Query("appid") appid: String,
                            @Query("lat") lat: String,
                            @Query("lon") lon: String,
                            ): Single<WeatherModel>
+
+
+
 }
-//@Query("uid") uid: String,

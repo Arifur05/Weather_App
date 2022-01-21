@@ -11,4 +11,4 @@ package com.arifur.weatherappusingkotlin.services.utils
     val API_KEY:String= "ab57e437b79e4f31ae5194712220101"
     val BASEURL:String = "https://api.openweathermap.org/"
 
-    //val BASE_API_IMAGE = "https://api.openweathermap.org/"
+    val BASE_API_IMAGE = "http://openweathermap.org/img/wn/"

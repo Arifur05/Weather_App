@@ -32,4 +32,5 @@ class Services {
         return weatherApi.getCurrentWeather(appid = appid, lat = lat ,lon= lon)
     }
 
+
 }

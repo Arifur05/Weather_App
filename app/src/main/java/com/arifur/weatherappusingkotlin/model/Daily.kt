@@ -10,23 +10,23 @@ import com.google.gson.annotations.Expose
 class Daily {
     @SerializedName("dt")
     @Expose
-    var dt: Int? = null
+    var dt: Double? = null
 
     @SerializedName("sunrise")
     @Expose
-    var sunrise: Int? = null
+    var sunrise: Double? = null
 
     @SerializedName("sunset")
     @Expose
-    var sunset: Int? = null
+    var sunset: Double? = null
 
     @SerializedName("moonrise")
     @Expose
-    var moonrise: Int? = null
+    var moonrise: Double? = null
 
     @SerializedName("moonset")
     @Expose
-    var moonset: Int? = null
+    var moonset: Double? = null
 
     @SerializedName("moon_phase")
     @Expose
@@ -42,15 +42,15 @@ class Daily {
 
     @SerializedName("pressure")
     @Expose
-    var pressure: Int? = null
+    var pressure: Double? = null
 
     @SerializedName("humidity")
     @Expose
-    var humidity: Int? = null
+    var humidity: Double? = null
 
-    @SerializedName("dew_point")
+    @SerializedName("dew_poDouble")
     @Expose
-    var dewPoint: Double? = null
+    var dewPoDouble: Double? = null
 
     @SerializedName("wind_speed")
     @Expose
@@ -58,7 +58,7 @@ class Daily {
 
     @SerializedName("wind_deg")
     @Expose
-    var windDeg: Int? = null
+    var windDeg: Double? = null
 
     @SerializedName("wind_gust")
     @Expose
@@ -70,11 +70,11 @@ class Daily {
 
     @SerializedName("clouds")
     @Expose
-    var clouds: Int? = null
+    var clouds: Double? = null
 
     @SerializedName("pop")
     @Expose
-    var pop: Int? = null
+    var pop: Double? = null
 
     @SerializedName("uvi")
     @Expose

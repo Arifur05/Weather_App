@@ -34,12 +34,11 @@ class HomeFragment : Fragment() {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-//    val textView: TextView = binding.temperatureNow
-
+        homeViewModel.refreshWeather()
         homeViewModel.weatherModel.observe(viewLifecycleOwner, Observer {
                 weather: WeatherModel -> weather.let {
-            binding.temperatureNow.text = it.current.toString()
+            print("called")
+            binding.temperatureNow.text = it.current?.temp.toString()
             Picasso.get().load(it.current?.weather?.get(0)?.icon).into(binding.weatherImage)
         }
         })

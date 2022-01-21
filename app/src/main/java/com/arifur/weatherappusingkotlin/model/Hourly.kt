@@ -7,7 +7,7 @@ import com.google.gson.annotations.Expose
 class Hourly {
     @SerializedName("dt")
     @Expose
-    var dt: Int? = null
+    var dt: Double? = null
 
     @SerializedName("temp")
     @Expose
@@ -19,15 +19,15 @@ class Hourly {
 
     @SerializedName("pressure")
     @Expose
-    var pressure: Int? = null
+    var pressure: Double? = null
 
     @SerializedName("humidity")
     @Expose
-    var humidity: Int? = null
+    var humidity: Double? = null
 
-    @SerializedName("dew_point")
+    @SerializedName("dew_poDouble")
     @Expose
-    var dewPoint: Double? = null
+    var dewPoDouble: Double? = null
 
     @SerializedName("uvi")
     @Expose
@@ -35,11 +35,11 @@ class Hourly {
 
     @SerializedName("clouds")
     @Expose
-    var clouds: Int? = null
+    var clouds: Double? = null
 
     @SerializedName("visibility")
     @Expose
-    var visibility: Int? = null
+    var visibility: Double? = null
 
     @SerializedName("wind_speed")
     @Expose
@@ -47,7 +47,7 @@ class Hourly {
 
     @SerializedName("wind_deg")
     @Expose
-    var windDeg: Int? = null
+    var windDeg: Double? = null
 
     @SerializedName("wind_gust")
     @Expose
@@ -59,6 +59,6 @@ class Hourly {
 
     @SerializedName("pop")
     @Expose
-    var pop: Int? = null
+    var pop: Double? = null
 
 }

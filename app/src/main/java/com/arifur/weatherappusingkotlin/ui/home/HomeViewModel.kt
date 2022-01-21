@@ -49,9 +49,9 @@ class HomeViewModel : ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableSingleObserver<WeatherModel>(){
-                    override fun onSuccess(value: WeatherModel?) {
-                        Log.d("HomeViewModel", "onError: $value")
-                        weatherModel.value = value!!
+                    override fun onSuccess(value: WeatherModel) {
+                        Log.d("HomeViewModel", "onSuccess`: $value")
+                        weatherModel.value = value
                         loadingError.value =false
                         loading.value = false
                     }
@@ -59,7 +59,7 @@ class HomeViewModel : ViewModel() {
                     override fun onError(e: Throwable) {
                         loading.value = false
                         loadingError.value =true
-                        Log.e("HomeViewModel", "onError: $e", )
+                        Log.e("HomeViewModel", "onError: ${e.message}")
                     }
 
                 }

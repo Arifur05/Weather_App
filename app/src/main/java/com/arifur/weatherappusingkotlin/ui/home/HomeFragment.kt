@@ -35,14 +35,39 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
         homeViewModel.refreshWeather()
+
+        loadWeatherData()
+        return root
+    }
+
+    fun loadWeatherData(){
         homeViewModel.weatherModel.observe(viewLifecycleOwner, Observer {
                 weather: WeatherModel -> weather.let {
             print("called")
-            binding.temperatureNow.text = it.current?.temp.toString()
+            binding.layoutWeather.visibility = View.VISIBLE
+            binding.loadingView.visibility = View.GONE
+            binding.temperatureNow.text = it.current?.temp.toString() + " °C"
             Picasso.get().load(it.current?.weather?.get(0)?.icon).into(binding.weatherImage)
         }
         })
-        return root
+
+        homeViewModel.loadingError.observe(viewLifecycleOwner, Observer {
+            isError -> isError.let {
+                binding.layoutWeather.visibility = if (it) View.VISIBLE else View.GONE
+        }
+        })
+
+        homeViewModel.loading.observe(viewLifecycleOwner, Observer {
+            isLoading -> isLoading.let {
+                binding.loadingView.visibility = if(it) View.VISIBLE else View.GONE
+            if(it){
+                binding.layoutWeather.visibility = View.GONE
+            }
+            else{
+                binding.layoutWeather.visibility = View.VISIBLE
+            }
+            }
+        })
     }
 
     override fun onDestroyView() {
